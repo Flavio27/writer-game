@@ -33,6 +33,7 @@ function MenuPause() {
       setEndTime(false);
       setTime(ONE_MINUTE);
     }
+    setWrittenWord("");
   };
 
   const handleSave = () => {
@@ -42,7 +43,6 @@ function MenuPause() {
   const handleChangeMode = () => {
     handleRestart();
     setGameMode(false);
-    setWrittenWord("");
     setStart(false);
   };
 
