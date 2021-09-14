@@ -1,23 +1,38 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import { MenuStart } from "../components/MenuStart";
 import { StopWatch } from "../components/StopWatch";
 import { usePlayer } from "../hooks/usePlayer";
 import { useGame } from "../hooks/useGame";
-import { beepSong } from "../functions/beepSong";
+import { beepSong } from "../functions/songs";
 import randomWords from "random-words";
 import { MenuPause } from "../components/MenuPause";
-import audio2 from "../assets/audio/audio2.mp3";
+import themeSong from "../assets/audio/themeSong.mp3";
 import "../styles/WriteGame.css";
 
 function WriteGame() {
-  const [writtenWord, setWrittenWord] = useState("");
   const [letter, setLetter] = useState("");
   const [animation, setAnimation] = useState(false);
-  const [start, setStart] = useState(false);
+
+  const [audio, setAudio] = useState(new Audio(themeSong));
   const history = useHistory();
 
-  const { word, setWord, pause, setPause, position, setPosition, sound } =
-    useGame();
+  const {
+    start,
+    setStart,
+    word,
+    setWord,
+    writtenWord,
+    setWrittenWord,
+    pause,
+    setPause,
+    position,
+    setPosition,
+    setSound,
+    sound,
+    timeEnd,
+    gameMode,
+  } = useGame();
   const { score, setScore, nickname } = usePlayer();
 
   const correctWord = () => {
@@ -28,36 +43,34 @@ function WriteGame() {
   };
 
   useEffect(() => {
-    const audio = new Audio(audio2);
-    if (sound) {
-      audio.addEventListener(
-        "ended",
-        function () {
-          this.currentTime = 0;
-          this.play();
-        },
-        false
-      );
-      return audio.play();
-    }
+    if (sound) return audio.play();
     if (!sound) return audio.pause();
-  }, [sound]);
+  }, [sound, audio]);
 
   useEffect(() => {
+    audio.addEventListener(
+      "ended",
+      function () {
+        this.currentTime = 0;
+        this.play();
+      },
+      false
+    );
+
     if (nickname.trim().length < 1) return history.push("/");
     window.addEventListener("keydown", (event) => {
       setLetter("");
-
       setLetter(event.key);
       if (event.key === "Enter") return setStart(true);
     });
   }, []);
 
   useEffect(() => {
-    const isSameLetter = word.charAt(position) === letter;
+    const isSameLetter = word.charAt(position) === letter.toLowerCase();
 
     if (start && letter === " ") {
       setLetter("");
+      setSound((e) => !e);
       return setPause((e) => !e);
     }
     if (start) {
@@ -65,8 +78,8 @@ function WriteGame() {
         setPosition(0);
         setScore(score + 1);
         setWrittenWord("");
-        correctWord();
         beepSong();
+        correctWord();
         return setWord(randomWords());
       }
 
@@ -86,7 +99,7 @@ function WriteGame() {
             {!pause ? (
               <div>
                 <span className="words words__fixed">{word.toUpperCase()}</span>
-                <span className="words words__correct">
+                <span className={`words words__correct ${gameMode}`}>
                   {writtenWord.toUpperCase()}
                 </span>
                 <div className="timer__div">
@@ -95,7 +108,7 @@ function WriteGame() {
 
                 <span className="score">
                   SCORE: {score}
-                  <span className="score__animation highlighted">
+                  <span className={`score__animation ${gameMode}`}>
                     {animation && "+1"}
                   </span>
                 </span>
@@ -105,9 +118,7 @@ function WriteGame() {
             )}
           </>
         ) : (
-          <span className="start">
-            PRESS <span className="highlighted">ENTER</span> TO START...
-          </span>
+          <MenuStart />
         )}
       </div>
     </div>

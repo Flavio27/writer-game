@@ -8,6 +8,7 @@
   background-color: #181818;
 }
 .start {
+  margin-top: 150px;
   -webkit-animation: breathing 3s ease-out infinite normal;
   animation: breathing 3s ease-out infinite normal;
 }
@@ -27,7 +28,6 @@
 
 .words__correct {
   z-index: 1;
-  color: #6aff97ab;
 }
 
 .timer__div {
@@ -46,6 +46,16 @@
 .highlighted {
   color: #6aff97ab;
 }
+.highlighted-yellow{
+  color: #ffe865;
+}
+
+.free {
+  color: #6aff97ab;
+}
+.timed{
+  color: #ffe865;
+}
 
 .App-container {
   min-height: 100vh;
@@ -62,6 +72,8 @@
   font-size: calc(10px + 1vmin);
   animation: scoreAnimation 0.5s infinite;
 }
+
+
 
 @keyframes scoreAnimation {
   from {top: 0px;}

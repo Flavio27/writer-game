@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { usePlayer } from "../hooks/usePlayer";
 import { useGame } from "../hooks/useGame";
-import audio2 from "../assets/audio/audio2.mp3";
 import "../styles/Home.css";
 
 function Home() {
@@ -18,17 +17,10 @@ function Home() {
   const handlePlay = () => {
     if (!error) {
       setNickname(inputName);
-      setSound(true)
+      setSound(true);
       history.push("/game");
     }
   };
-
-
-  useEffect(() => {
-    const audio = new Audio(audio2);
-    if (sound) return audio.play()
-    if (!sound) return audio.pause()
-  }, [sound]);
 
   useEffect(() => {
     const inputSize = inputName.trim().length;
@@ -42,7 +34,7 @@ function Home() {
 
   return (
     <div className="App">
-      <header className="App-container">
+      <div className="App-container">
         <div className="login">
           <div>
             <input
@@ -60,7 +52,8 @@ function Home() {
             PLAY
           </button>
         </div>
-      </header>
+      </div>
+
     </div>
   );
 }

@@ -12,7 +12,7 @@ function Routes() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/game" component={WriteGame} />
-            {/* <Route component={WriteGame} /> */}
+            <Route component={Home} />
           </Switch>
         </GameContextProvider>
       </PlayerContextProvider>

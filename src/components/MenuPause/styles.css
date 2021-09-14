@@ -18,17 +18,12 @@
   transition: all ease 0.3s;
 }
 
-.btn__restart {
-  border: 1px solid #ff3d3d;
-}
 
-.btn__restart:hover {
-  background-color: #ff3d3d;
-}
 
 .btn__save {
   border: 1px solid #6aff97ab;
 }
+
 .btn__save:disabled {
   border: 1px solid #e7e7e777;
   color: #ffffff56;
@@ -38,6 +33,22 @@
 .btn__save:hover:enabled {
   background-color: #6aff97ab;
 }
+
+.btn__alert {
+  border: 1px solid #ffe865;
+}
+
+.btn__alert:hover {
+  background-color: #ffe865;
+}
+.btn__restart {
+  border: 1px solid #ff3d3d;
+}
+
+.btn__restart:hover {
+  background-color: #ff3d3d;
+}
+
 
 .menu-timer__div {
   display: flex;
@@ -54,4 +65,19 @@
   font-size: calc(10px + 1vmin);
   -webkit-animation: breathing 3s ease-out infinite normal;
   animation: breathing 3s ease-out infinite normal;
+}
+
+.change-mode{
+  font-size: calc(8px + 1vmin);
+  margin-top: -20px;
+  margin-bottom: 50px;
+  cursor: pointer;
+}
+
+.name-div{
+  display: flex;
+  margin-bottom: 20px;
+}
+.change-mode:hover{
+  filter: brightness(0.7);
 }
