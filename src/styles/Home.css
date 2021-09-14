@@ -1,0 +1,106 @@
+.login {
+  background-color: #181818;
+  padding: 20px;
+}
+
+.login__input {
+  color: #ffffff;
+  background-color: #181818;
+  text-align: center;
+  font-size: calc(25px + 1vmin);
+  border: none;
+  border-bottom: 3px solid #e1e1e14b;
+}
+
+.login__input:focus {
+  outline: none;
+  border: none;
+  -webkit-animation: breathingCollor 1.5s ease-out infinite normal;
+  animation: breathingCollor 1.5s ease-out infinite normal;
+}
+
+.login__input--error {
+  color: #ffffff;
+  background-color: #181818;
+  text-align: center;
+  font-size: calc(25px + 1vmin);
+  border: none;
+  border-bottom: 3px solid #e1e1e14b;
+}
+
+.login__input--error:focus {
+  outline: none;
+  border: none;
+  -webkit-animation: breathingCollorError 1.5s ease-out infinite normal;
+  animation: breathingCollorError 1.5s ease-out infinite normal;
+}
+
+@keyframes breathingCollorError {
+  0% {
+    border-bottom: 3px solid #ff0000ab;
+  }
+
+  25% {
+    border-bottom: 3px solid #ff000070;
+  }
+
+  60% {
+    border-bottom: 3px solid #ff00003b;
+  }
+
+  100% {
+    border-bottom: 3px solid #ff000000;
+  }
+}
+@-webkit-keyframes breathingCollorError {
+  0% {
+    border-bottom: 3px solid #ff0000ab;
+  }
+
+  25% {
+    border-bottom: 3px solid #ff000070;
+  }
+
+  60% {
+    border-bottom: 3px solid #ff00003b;
+  }
+
+  100% {
+    border-bottom: 3px solid #ff000000;
+  }
+}
+
+@-webkit-keyframes breathingCollor {
+  0% {
+    border-bottom: 3px solid #6aff97ab;
+  }
+
+  25% {
+    border-bottom: 3px solid #6aff9760;
+  }
+
+  60% {
+    border-bottom: 3px solid #6aff9731;
+  }
+
+  100% {
+    border-bottom: 3px solid #6aff9700;
+  }
+}
+@keyframes breathingCollor {
+  0% {
+    border-bottom: 3px solid #6aff97ab;
+  }
+
+  25% {
+    border-bottom: 3px solid #6aff9760;
+  }
+
+  60% {
+    border-bottom: 3px solid #6aff9731;
+  }
+
+  100% {
+    border-bottom: 3px solid #6aff9700;
+  }
+}
