@@ -8,6 +8,7 @@ export function GameContextProvider({ children }) {
   const [pause, setPause] = useState(false);
   const [word, setWord] = useState(randomWords());
   const [position, setPosition] = useState(0);
+  const [sound, setSound] = useState(false);
 
   return (
     <GameContext.Provider
@@ -20,6 +21,8 @@ export function GameContextProvider({ children }) {
         setWord,
         position,
         setPosition,
+        sound,
+        setSound,
       }}
     >
       {children}
