@@ -6,7 +6,7 @@ import "../styles/Home.css";
 
 function Home() {
   const [inputName, setInputName] = useState("");
-  const { nickname, setNickname } = usePlayer();
+  const { setNickname } = usePlayer();
   const { sound, setSound } = useGame();
   const [error, setError] = useState(true);
   const history = useHistory();
@@ -17,7 +17,7 @@ function Home() {
   const handlePlay = () => {
     if (!error) {
       setNickname(inputName);
-      setSound(true);
+      if (!sound) setSound(true);
       history.push("/game");
     }
   };
@@ -53,7 +53,6 @@ function Home() {
           </button>
         </div>
       </div>
-
     </div>
   );
 }

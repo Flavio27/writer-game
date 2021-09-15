@@ -93,6 +93,10 @@
   top: 50px;
 }
 
+.game-volume:hover{
+  filter: brightness(0.7);
+}
+
 
 @keyframes scoreAnimation {
   from {top: 0px;}

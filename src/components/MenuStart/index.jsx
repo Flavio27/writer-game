@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { selectModeSong, backMenuSong } from "../../functions/songs";
 import { useGame } from "../../hooks/useGame";
 import "./styles.scss";
 
@@ -6,8 +7,15 @@ function MenuStart() {
   const { gameMode, setGameMode, setTime } = useGame();
   const ONE_MINUTE = 60000;
   const FREE_MINUTES = 0;
+
   const handleMode = (mode) => {
+    selectModeSong();
     setGameMode(mode);
+  };
+
+  const handleBack = () => {
+    setGameMode(false);
+    backMenuSong();
   };
 
   useEffect(() => {
@@ -52,7 +60,7 @@ function MenuStart() {
               This mode has no time limit for writing the words.
             </p>
           )}
-          <div className="menu-start__back" onClick={() => setGameMode(false)}>
+          <div className="menu-start__back" onClick={handleBack}>
             ← BACK TO SELECT MODE
           </div>
           <div className="start">

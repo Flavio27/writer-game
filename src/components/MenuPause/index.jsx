@@ -1,10 +1,12 @@
 import { useGame } from "../../hooks/useGame";
 import { usePlayer } from "../../hooks/usePlayer";
+import { backMenuSong } from "../../functions/songs";
 import { Timer } from "../Timer";
 import randomWords from "random-words";
 import "./styles.css";
 
 function MenuPause() {
+  const ONE_MINUTE = 60000;
   const {
     setTime,
     setPause,
@@ -20,8 +22,6 @@ function MenuPause() {
   } = useGame();
   const { setScore, score, nickname } = usePlayer();
 
-  const ONE_MINUTE = 60000;
-
   const handleRestart = () => {
     setTime(0);
     setScore(0);
@@ -34,6 +34,9 @@ function MenuPause() {
       setTime(ONE_MINUTE);
     }
     setWrittenWord("");
+    setStart(false);
+    setStart(false);
+    backMenuSong();
   };
 
   const handleSave = () => {
@@ -44,6 +47,7 @@ function MenuPause() {
     handleRestart();
     setGameMode(false);
     setStart(false);
+    backMenuSong();
   };
 
   return (

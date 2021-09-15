@@ -1,24 +1,25 @@
 import React, { useEffect } from "react";
+import { endTimeSong } from "../../functions/songs";
 import { useGame } from "../../hooks/useGame";
 import { Timer } from "../Timer";
 import "./styles.css";
 
 function StopWatch() {
-  const { setTime, time, pause, setPause, gameMode, setEndTime} = useGame();
+  const { setTime, time, pause, setPause, gameMode, setEndTime, setSound } =
+    useGame();
 
   useEffect(() => {
     let interval = null;
     if (pause === false) {
-      if (gameMode === "free"){
+      if (gameMode === "free") {
         interval = setInterval(() => {
           setTime((time) => time + 10);
         }, 10);
-      }else{
+      } else {
         interval = setInterval(() => {
-          setTime((time) => time -10);
+          setTime((time) => time - 10);
         }, 10);
       }
-
     } else {
       clearInterval(interval);
     }
@@ -28,12 +29,14 @@ function StopWatch() {
   }, [pause, setTime]);
 
   useEffect(() => {
-    if (gameMode === "timed" && time === 0){
+    if (gameMode === "timed" && time === 0) {
+      endTimeSong();
+      setSound(false);
       setEndTime(true);
-      return setPause(true)
-    }
-  }, [time])
 
+      return setPause(true);
+    }
+  }, [time]);
 
   return (
     <div className="stop-watch">
