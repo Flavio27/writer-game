@@ -54,25 +54,42 @@ function MenuPause() {
     <div>
       <div className="menu-pause">
         {endTime ? <div>TIME IS OVER!</div> : <div>GAME PAUSED</div>}
+        {endTime && (
+          <div className="menu-timed__end-time">
+            <div className={`menu-timed__score ${gameMode}`}>
+              SCORE: {score}
+            </div>
+            <div className="menu-timed__name">
+              NAME: {nickname.toUpperCase()}
+            </div>
+
+          </div>
+        )}
         <button className="btn btn__restart" onClick={handleRestart}>
           RESTART
         </button>
         <button className="btn btn__save" onClick={handleSave}>
-          SAVE
+          SAVE RESULT
         </button>
         <div className="change-mode" onClick={handleChangeMode}>
           ↩ CHANGE GAME MODE
         </div>
-        <div className="mode-div">
-          MODE: <span className={gameMode}>{gameMode.toUpperCase()} TIME</span>
-        </div>
-        <div className="status-div">
-          <div className="name-div">NAME: {nickname.toUpperCase()}</div>
-          <div className="menu-timer__div">
-            {!endTime && <Timer />}
-            <span className="timer__div--score">SCORE: {score}</span>
+
+        {!endTime && (
+          <div>
+            <div className="mode-div">
+              MODE:{" "}
+              <span className={gameMode}>{gameMode.toUpperCase()} TIME</span>
+            </div>
+            <div className="status-div">
+              <div className="name-div">NAME: {nickname.toUpperCase()}</div>
+              <div className="menu-timer__div">
+                <Timer />
+                <span className="timer__div--score">SCORE: {score}</span>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
       </div>
       {!endTime && (
         <div className="return-game">PRESS SPACE-BAR TO CONTINUE...</div>

@@ -47,6 +47,21 @@
   background-color: #ff3d3d;
 }
 
+.menu-timed__end-time{
+  margin-top: 50px;
+}
+
+.menu-timed__score{
+  font-size: calc(20px + 1vmin);
+  -webkit-animation: breathing 3s ease-out infinite normal;
+  animation: breathing 3s ease-out infinite normal;
+}
+.menu-timed__name{
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-size: calc(10px + 1vmin);
+}
+
 .menu-timer__div {
   display: flex;
   justify-content: space-between;
@@ -55,6 +70,8 @@
 .timer__div--score {
 
 }
+
+
 
 .return-game {
   margin-top: 50px;
@@ -68,7 +85,7 @@
 .change-mode {
   font-size: calc(8px + 1vmin);
   margin-top: -20px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   cursor: pointer;
   border-radius: 8px;
   border: 2px solid #e1e1e115;
@@ -81,7 +98,8 @@
 }
 
 .mode-div {
-  font-size: calc(12px + 1vmin);
+  font-size: calc(10px + 1vmin);
+  margin-top: 30px;
   margin-bottom: 20px;
 }
 
