@@ -59,12 +59,15 @@ function MenuPause() {
         <div className="change-mode" onClick={handleChangeMode}>
           ↩ CHANGE GAME MODE
         </div>
-        <div className="name-div">
-          NAME: {nickname}
+        <div className="mode-div">
+          MODE: <span className={gameMode}>{gameMode.toUpperCase()} TIME</span>
         </div>
-        <div className="menu-timer__div">
-          {!endTime && <Timer />}
-          <span className="timer__div--score">SCORE: {score}</span>
+        <div className="status-div">
+          <div className="name-div">NAME: {nickname.toUpperCase()}</div>
+          <div className="menu-timer__div">
+            {!endTime && <Timer />}
+            <span className="timer__div--score">SCORE: {score}</span>
+          </div>
         </div>
       </div>
       {!endTime && (

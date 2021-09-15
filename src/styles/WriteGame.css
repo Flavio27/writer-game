@@ -64,7 +64,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #FFFFFF;
 }
 .score__animation{
   position: relative;
@@ -73,6 +73,25 @@
   animation: scoreAnimation 0.5s infinite;
 }
 
+.pause-game{
+  position: absolute;
+  bottom: 20%;
+  color: #7a7a7a;
+  left: 40%;
+  font-size: calc(10px + 1vmin);
+  -webkit-animation: breathing 3s ease-out infinite normal;
+  animation: breathing 3s ease-out infinite normal;
+  
+}
+
+.game-volume{
+  position: absolute;
+  font-size: calc(20px + 1vmin);
+  cursor: pointer;
+  color: #FFFFFF;
+  right: 50px;
+  top: 50px;
+}
 
 
 @keyframes scoreAnimation {

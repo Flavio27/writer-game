@@ -13,7 +13,7 @@ import "../styles/WriteGame.css";
 function WriteGame() {
   const [letter, setLetter] = useState("");
   const [animation, setAnimation] = useState(false);
-
+  const [muteSong, setMuteSong] = useState(false);
   const [audio, setAudio] = useState(new Audio(themeSong));
   const history = useHistory();
 
@@ -43,9 +43,10 @@ function WriteGame() {
   };
 
   useEffect(() => {
+    if(muteSong) return audio.pause();
     if (sound) return audio.play();
     if (!sound) return audio.pause();
-  }, [sound, audio]);
+  }, [sound, audio, muteSong]);
 
   useEffect(() => {
     audio.addEventListener(
@@ -68,11 +69,16 @@ function WriteGame() {
   useEffect(() => {
     const isSameLetter = word.charAt(position) === letter.toLowerCase();
 
+    if (letter === "Enter") {
+      if (!gameMode) return setStart(false);
+    }
+
     if (start && letter === " ") {
       setLetter("");
       setSound((e) => !e);
       return setPause((e) => !e);
     }
+
     if (start) {
       if (position === word.length) {
         setPosition(0);
@@ -89,7 +95,23 @@ function WriteGame() {
         return setPosition(position + 1);
       }
     }
-  }, [letter, position, score, word, writtenWord, start, setScore]);
+  }, [
+    letter,
+    position,
+    score,
+    word,
+    writtenWord,
+    start,
+    setScore,
+    gameMode,
+    setStart,
+    setSound,
+    setPause,
+    pause,
+    setPosition,
+    setWrittenWord,
+    setWord,
+  ]);
 
   return (
     <div className="App">
@@ -121,6 +143,15 @@ function WriteGame() {
           <MenuStart />
         )}
       </div>
+      {!pause && start && (
+        <div className="pause-game">PRESS SPACE-BAR TO PAUSE...</div>
+      )}
+      <span
+        class="material-icons game-volume"
+        onClick={() => setMuteSong((e) => !e)}
+      >
+        {muteSong ? "volume_off" : "volume_up"}
+      </span>
     </div>
   );
 }
