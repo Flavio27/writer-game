@@ -40,7 +40,7 @@ function MenuPause() {
   };
 
   const handleSave = () => {
-    console.log("SAVE");
+    console.log("SAVE.");
   };
 
   const handleChangeMode = () => {
