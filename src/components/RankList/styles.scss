@@ -1,0 +1,56 @@
+.menu-rank {
+  position: absolute;
+  z-index: 999;
+  background-color: #202020;
+  border: 2px solid #e1e1e107;
+  padding: 20px;
+  min-height: 260px;
+  min-width: 480px;
+  
+}
+
+#customers {
+  border-collapse: collapse;
+  margin-top: 10px;
+
+}
+
+#customers td,
+#customers th {
+  border-bottom: 1px solid #e1e1e134;
+  padding: 0 50px;
+  text-align: center;
+}
+
+#customers tr:hover {
+  background-color: #313131;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  color: #ffffff;
+  text-align: center;
+}
+
+.header-rank {
+  font-size: calc(2px + 2vmin);
+}
+
+.body-rank {
+  font-size: calc(2px + 2vmin);
+}
+
+.close-div{
+  display: flex;
+  justify-content: right;
+  margin-top: -10px;
+
+  span{
+    cursor: pointer;
+    &:hover{
+      filter: brightness(0.7);
+    }
+  }
+}

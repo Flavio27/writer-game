@@ -13,6 +13,7 @@ export function GameContextProvider({ children }) {
   const [gameMode, setGameMode] = useState(false);
   const [sound, setSound] = useState(false);
   const [endTime, setEndTime] = useState(false);
+  const [rankList, setRankList] = useState(false);
 
   return (
     <GameContext.Provider
@@ -25,7 +26,7 @@ export function GameContextProvider({ children }) {
         setTime,
         word,
         setWord,
-        writtenWord, 
+        writtenWord,
         setWrittenWord,
         position,
         setPosition,
@@ -34,7 +35,9 @@ export function GameContextProvider({ children }) {
         sound,
         setSound,
         endTime,
-        setEndTime
+        setEndTime,
+        rankList,
+        setRankList,
       }}
     >
       {children}

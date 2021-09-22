@@ -1,10 +1,15 @@
 import React, { useEffect } from "react";
 import { endTimeSong } from "../../functions/songs";
+import { rankAPI } from "../../services/api";
+import { usePlayer } from "../../hooks/usePlayer";
 import { useGame } from "../../hooks/useGame";
+
 import { Timer } from "../Timer";
 import "./styles.css";
 
 function StopWatch() {
+  const { score, nickname } = usePlayer();
+
   const { setTime, time, pause, setPause, gameMode, setEndTime, setSound } =
     useGame();
 
@@ -33,6 +38,11 @@ function StopWatch() {
       endTimeSong();
       setSound(false);
       setEndTime(true);
+
+      rankAPI.post("/rank", {
+        name: nickname || "unknown",
+        score,
+      });
 
       return setPause(true);
     }

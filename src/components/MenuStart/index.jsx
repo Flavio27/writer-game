@@ -1,16 +1,22 @@
 import { useEffect } from "react";
 import { selectModeSong, backMenuSong } from "../../functions/songs";
 import { useGame } from "../../hooks/useGame";
+import { RankList } from "../RankList";
 import "./styles.scss";
 
 function MenuStart() {
-  const { gameMode, setGameMode, setTime } = useGame();
+  const { gameMode, setGameMode, setTime, rankList, setRankList } = useGame();
   const ONE_MINUTE = 60000;
   const FREE_MINUTES = 0;
 
   const handleMode = (mode) => {
     selectModeSong();
     setGameMode(mode);
+  };
+
+  const handleRank = () => {
+    selectModeSong();
+    setRankList(true)
   };
 
   const handleBack = () => {
@@ -29,6 +35,7 @@ function MenuStart() {
 
   return (
     <>
+      {rankList && <RankList />}
       {!gameMode ? (
         <div className="menu-start">
           SELECT MODE
@@ -45,6 +52,10 @@ function MenuStart() {
             >
               TIMED MODE
             </button>
+          </div>
+          <div className="rank-list" onClick={handleRank}>
+            <span className="material-icons star-icon">star</span>
+            TOP 5 SCORES
           </div>
         </div>
       ) : (

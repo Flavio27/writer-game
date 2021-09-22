@@ -1,14 +1,13 @@
-.menu-start{
- display: flex;
- flex-direction: column;
-
+.menu-start {
+  display: flex;
+  flex-direction: column;
 }
 
-.menu-start__buttons{
+.menu-start__buttons {
   display: flex;
 }
 
-.game-mode{
+.game-mode {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,12 +16,12 @@
   padding: 20px;
 }
 
-.game-mode__title{
+.game-mode__title {
   font-size: calc(30px + 2vmin);
   margin-bottom: 20px;
 }
 
-.menu-start__text{
+.menu-start__text {
   text-transform: uppercase;
   max-width: 360px;
 
@@ -30,23 +29,45 @@
   padding: 20px;
   font-size: calc(8px + 1vmin);
 
-  &.timed-text{
-    border:0.3px solid #ffe865;
+  &.timed-text {
+    border: 0.3px solid #ffe865;
   }
-  
-  &.free-text{
-    border:0.3px solid #6aff97ab;
+
+  &.free-text {
+    border: 0.3px solid #6aff97ab;
   }
-  
 }
 
-.menu-start__back{
+.menu-start__back {
   cursor: pointer;
   position: absolute;
   top: 50px;
   left: 50px;
   font-size: calc(10px + 1vmin);
-  &:hover{
+  &:hover {
+    filter: brightness(0.7);
+  }
+}
+
+.rank-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(5px + 1vmin);
+  cursor: pointer;
+  border-bottom: 2px solid #e1e1e131;
+  width: 180px;
+  margin: 0 auto;
+  padding: 5px 0;
+  font-weight: 700;
+
+  .star-icon {
+    color: #ffe865;
+    margin-right: 5px;
+  }
+
+
+  &:hover {
     filter: brightness(0.7);
   }
 }
