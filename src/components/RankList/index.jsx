@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { rankAPI } from "../../services/api";
 import { useGame } from "../../hooks/useGame";
+import { Spinner } from "../Spinner";
 import "./styles.scss";
 import { backMenuSong } from "../../functions/songs";
 
@@ -29,7 +30,8 @@ function RankList() {
       try {
         const response = await rankAPI.get("/rank");
         const ordered = await sortByScore(response.data);
-        setList(ordered);
+        const top10Scores = ordered.slice(0, 10);
+        setList(top10Scores);
         setIsLoading(false);
       } catch (error) {
         setIsLoading(true);
@@ -47,7 +49,9 @@ function RankList() {
         </span>
       </div>
       {isLoading ? (
-        <span>carregando...</span>
+        <div className="spinner-div">
+        <Spinner color="yellow"/>
+        </div>
       ) : (
         <table id="customers">
           <tbody>
@@ -59,7 +63,7 @@ function RankList() {
             {list.map((rank, index) => (
               <tr className="body-rank">
                 <td>{index + 1}º</td>
-                <td>{rank.name}</td>
+                <td>{rank.name.toUpperCase()}</td>
                 <td>{rank.score}</td>
               </tr>
             ))}

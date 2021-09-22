@@ -55,7 +55,7 @@ function MenuStart() {
           </div>
           <div className="rank-list" onClick={handleRank}>
             <span className="material-icons star-icon">star</span>
-            TOP 5 SCORES
+            TOP 10 SCORES
           </div>
         </div>
       ) : (
