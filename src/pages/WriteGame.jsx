@@ -48,9 +48,6 @@ function WriteGame() {
   }, [sound, audio, muteSong]);
 
   useEffect(() => {
-    console.log(process.env.REACT_APP_HOST)
-    console.log(process.env.REACT_APP_HOST)
-
     audio.addEventListener(
       "ended",
       function () {

@@ -29,7 +29,7 @@ function RankList() {
       setIsLoading(true);
       try {
         const response = await rankAPI.get("/rank");
-        const ordered = await sortByScore(response.data);
+        const ordered = await sortByScore(response.data.rank);
         const top10Scores = ordered.slice(0, 10);
         setList(top10Scores);
         setIsLoading(false);
